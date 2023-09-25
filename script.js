@@ -6,6 +6,9 @@ const websiteNameEl = document.getElementById('website-name');
 const websiteUrlEl = document.getElementById('website-url');
 const bookmarksContainer = document.getElementById('bookmarks-container');
 
+
+let bookmarks = [];
+
 // show modal
 function showModal(){
     modal.classList.add('show-modal');
@@ -15,8 +18,8 @@ function showModal(){
 
 // event listener
 modalShow.addEventListener('click', showModal);
-modal.Close.addEventListener('click', () =>{
-    modal.classList.remove('show-modal')
+modalClose.addEventListener('click', () =>{
+modal.classList.remove('show-modal')
 });
 window.addEventListener('click', (e) =>(e.target === modal ? modal.classList.remove('show-modal') : false));
 
@@ -48,7 +51,7 @@ function validate(nameValue, urlValue) {
       item.classList.add('item');
       // Close Icon
       const closeIcon = document.createElement('i');
-      closeIcon.classList.add('fas', 'fa-times');
+      closeIcon.classList.add('fa-regular', 'fa-circle-xmark');
       closeIcon.setAttribute('title', 'Delete Bookmark');
       closeIcon.setAttribute('onclick', `deleteBookmark('${url}')`);
       // Favicon / Link Container
@@ -79,8 +82,8 @@ function validate(nameValue, urlValue) {
       // Create bookmarks array in localStorage
       bookmarks = [
         {
-          name: 'Jacinto Design',
-          url: 'http://jacinto.design',
+          name: 'Portfolio',
+          url: 'https://whirlwindraven.github.io/my-react-app/',
         },
       ];
       localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
